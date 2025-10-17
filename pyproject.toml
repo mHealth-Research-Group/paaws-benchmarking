@@ -1,0 +1,20 @@
+[project]
+name = "paaws-benchmarking"
+version = "0.1.0"
+description = "This is the GitHub repository of The Physical Activity Assessment Using Wearable Sensors Dataset: Labeled Free-Living Accelerometer Data (IMWUT '25). If you use this data, please cite our paper and email us (potter.v@northeastern.edu)."
+readme = "README.md"
+requires-python = "==3.13.5"
+dependencies = [
+    "joblib==1.5.1",
+    "numpy==2.3.2",
+    "pandas==2.3.1",
+    "scikit-learn==1.7.1",
+    "scipy==1.16.1",
+    "xgboost==3.0.4",
+    "tqdm>=4.67.1",
+]
+
+[tool.ruff]
+# Same as Black.
+line-length = 80
+indent-width = 4
