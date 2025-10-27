@@ -1,12 +1,10 @@
 # The Physical Activity Assessment Using Wearable Sensors Dataset: Labeled Free-Living Accelerometer Data
 
-This is the GitHub repository of The Physical Activity Assessment Using Wearable Sensors Dataset: Labeled Free-Living Accelerometer Data (IMWUT '25). If you use this data, please [cite our paper](#citation) and [email us](mailto:potter.v@northeastern.edu). All the [data used in these experiments is available](#data-availability).
+This is the GitHub repository of The Physical Activity Assessment Using Wearable Sensors Dataset: Labeled Free-Living Accelerometer Data (IMWUT '25). If you use this data, please [cite our paper](#citation) and [email us](https://www.paawsstudy.org/contact-us.html). All the [data used in these experiments is available](#data-availability).
 
 ## Repository Structure
 
 `/data`: folder with two participants' data (raw and as computed features) to use when training or running trained models without downloading the entire dataset. Our code is set up to use paths directing to this folder, if you [download the PAAWS R1 dataset](https://hdl.handle.net/2047/D20806901) and want to use our code, place the full dataset in this directory.
-
-`/misc_scripts`: folder containing sample scripts to load raw accelerometer data into a DataFrame with timestamps and activity labels ([read_accelerometer_data.py](https://github.com/mHealth-Research-Group/paaws-benchmarking/blob/main/misc_scripts/read_accelerometer_data.py)) and to rotate ankle and waist sensor data so the data is in the same orientation across the SimFL+Lab and FL protocols ([rotate_sensors.py](https://github.com/mHealth-Research-Group/paaws-benchmarking/blob/main/misc_scripts/rotate_sensors.py)).
 
 `/models`: folder containing a single random forest model trained on the PAAWS SimFL+Lab data to recognize five activities using the data from 20 participants. To run more of our models, [please download them](https://drive.google.com/drive/folders/12Xr5isM4o_63GQXUstmpLAYKuu1uvIc9?usp=sharing) and unzip them individually in this folder.
 
@@ -35,33 +33,33 @@ Our code is currently set up to not use a `main.py` for increased readability. T
 ### Training and Evaluating a Model
 Models are trained and evaluated using the `/run_experiment.py` script.
 1. Clone the repository.
-```bash
+```
 git clone git@github.com:mHealth-Research-Group/paaws-benchmarking.git
 ```
 2. (Optional) Set up a virtual environment of your choice. For our experiments, we used **Python version 3.13.5** (see `pyproject.toml` and `requirements.txt` for more information on our specific environment).
 3. Install the required python packages in `requirements.txt`. We recommend using pip.
-```bash
+```
 pip install -r requirements.txt
 ```
 4.  Train a new random forest (RF) model using the sample PAAWS data provided in this repo. In this example, we are using the Left Wrist, SimFL+Lab data from DS_36 as training data and evaluate the trained RF on DS_10's Left Wrist SimFL+Lab data. If you'd like to train or evaluate a model using more data than the small subset we provide in this repo, update the `/data` folder to contain the entirety of the dataset or alter the pathing in the preprocessing code (paths to where the data is fetched from are on lines 60 and 183 in `get_and_clean_data.py`). NOTE: when changing what data is used, you should update the command line arguments accordingly (see the **NOTE**).
-```bash
+```
 python run_experiment.py --ds_lo=10 --sensor="LeftWristTop" --dataset="2" --lab --out_file="temp_results"
 ```
 
 **NOTE**: We use command line arguments to toggle settings in each experiment. For more information on what each command line argument means and how to configure your arguments, run the following line:
-```bash
+```
 python run_experiment.py --h
 ```
 
 ### Using our Models for Inference
 
 To make predictions using a pre-trained model run the `/make_predictions.py` script. In this example, we are using the random forest trained on 20 participants Left Wrist data collected during the SimFL+Lab protocol and evaluating on the data collected from DS_10 (**NOTE**: this dataset is included in the training set and should not be used to evaluate the performance of this model; we chose this dataset for demonstration purposes). We've noted in the code where you will need to change the processing if you'd like to evaluate a model using different data (`/make_predictions.py` line 151). Make sure you have [unzipped the model weights](https://github.com/mHealth-Research-Group/paaws-benchmarking/blob/main/models/README.md#using-the-example-model) before running this code.
-```bash
+```
 python make_predictions.py --ds_lo=10 --sensor="LeftWrist" --n="20" --mapping="lab_fl_5" --out_file="temp_results" --lab
 ```
 
 **NOTE**: For making inferences, we also use command line arguments to toggle settings in each experiment. For more information on what each command line argument means and how to configure your arguments, run the following line:
-```bash
+```
 python make_predictions.py --h
 ```
 
@@ -80,7 +78,7 @@ Interact. Mob. Wearable Ubiquitous Technol.* 9, 4, Article 204 (December 2025), 
 
 We also provide our citation as a bibtex:
 ```bibtex
-@article{paaws,
+@article{potter_2025__paaws_dataset,
   title = {The Physical Activity Assessment Using Wearable Sensors (PAAWS) Dataset: Labeled Laboratory and Free-Living Accelerometer Data},
   author = {Potter, Veronika, and Tran, Hoan and Mobley, Daniel and Bertisch, Suzanne M. and John, Dinesh and Intille, Stephen},
   year = {2025},
@@ -94,10 +92,14 @@ We also provide our citation as a bibtex:
 
 Our paper is available as a [pdf](https://github.com/mHealth-Research-Group/paaws-benchmarking/blob/main/results/paper.pdf) or from the [ACM Digital library](https://doi.org/10.1145/3770639).
 
+## More Info on PAAWS
+
+For more information on the PAAWS dataset and resources associated with the dataset, see [the PAAWS study repository](https://github.com/mHealth-Research-Group/paaws-study).
+
 ## Questions, Comments, Issues
 
-Please use the [issue tracker](https://github.com/mHealth-Research-Group/paaws-benchmarking/issues) for any questions, comments, or issues when using the data.
-If we have not responded to your issue within a week, please [email us](mailto:potter.v@northeastern.edu).
+Please use the [issue tracker](https://github.com/mHealth-Research-Group/paaws-study/issuess) for any questions, comments, or issues when using the data.
+If we have not responded to your issue within a week, please [email us](https://www.paawsstudy.org/contact-us.html).
 
 ## Acknowledgements
 
