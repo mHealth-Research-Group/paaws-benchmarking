@@ -37,7 +37,7 @@ MAPPING_SCHEMES = {
 
         "Walking": "Walking",
         "Treadmill_2mph_Lab": "Walking",
-        "Treadmill_3mph_Coversation_Lab": "Walking",
+        "Treadmill_3mph_Conversation_Lab": "Walking",
         "Treadmill_3mph_Free_Walk_Lab": "Walking",
         "Treadmill_3mph_Drink_Lab": "Walking",
         "Treadmill_3mph_Briefcase_Lab": "Walking",
@@ -74,7 +74,7 @@ MAPPING_SCHEMES = {
 
         "Walking": "Walking",
         "Treadmill_2mph_Lab": "Walking",
-        "Treadmill_3mph_Coversation_Lab": "Walking",
+        "Treadmill_3mph_Conversation_Lab": "Walking",
         "Treadmill_3mph_Free_Walk_Lab": "Walking",
         "Treadmill_3mph_Drink_Lab": "Walking",
         "Treadmill_3mph_Briefcase_Lab": "Walking",
