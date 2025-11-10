@@ -60,6 +60,6 @@ with open("replicate_4.2.2_fl_jobs.txt", "w") as f:
 
 ## 4.2.3 - Benchmarking the PSG Dataset
 
-Run the [SWaN algorithm](https://github.com/binodthapachhetry/SWaN) across the FL participants data (`DATASET_LISTS['FL_20']` in `/utils.py`).
+Run the <a href="https://github.com/binodthapachhetry/SWaN" target="_blank">SWaN algorithm</a> across the FL participants data (`DATASET_LISTS['FL_20']` in `/utils.py`).
 
 **NOTE**: Some of the participants in the PAAWS R1 FL dataset do not have sleep data, we ran our analyses across only the participants that had sleep data.
