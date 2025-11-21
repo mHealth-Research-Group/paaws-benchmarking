@@ -56,7 +56,7 @@ python run_experiment.py -h
 
 ### Using our Models for Inference
 
-To make predictions using a pre-trained model run the `/make_predictions.py` script. In this example, we are using the random forest trained on 20 participants Left Wrist data collected during the SimFL+Lab protocol and evaluating on the data collected from DS_10 (**NOTE**: this dataset is included in the training set and should not be used to evaluate the performance of this model; we chose this dataset for demonstration purposes). We've noted in the code where you will need to change the processing if you'd like to evaluate a model using different data (`/make_predictions.py` line 151). Make sure you have [unzipped the model weights](https://github.com/mHealth-Research-Group/paaws-benchmarking/blob/main/models/README.md#using-the-example-model) before running this code.
+To make predictions using a pre-trained model run the `/make_predictions.py` script. In this example, we are using the random forest trained on 20 participants Left Wrist data collected during the SimFL+Lab protocol and evaluating on the data collected from DS_10 (**NOTE**: this dataset is included in the training set and should not be used to evaluate the performance of this model; we chose this dataset for demonstration purposes). We've noted in the code where you will need to change the processing if you'd like to evaluate a model using different data (`/make_predictions.py` line 151). Make sure you have <a href="https://github.com/mHealth-Research-Group/paaws-benchmarking/blob/main/models/README.md#using-the-example-model" target="_blank"> unzipped the model weights</a> before running this code.
 ```
 python make_predictions.py --ds_lo=10 --sensor="LeftWrist" --n="20" --mapping="lab_fl_5" --out_file="temp_results" --lab
 ```
@@ -67,13 +67,13 @@ python make_predictions.py -h
 ```
 
 ### Replicating Our Results
-We've included `/replicate_our_results/replicate_4.2.1_simfl_jobs.txt` and `/replicate_our_results/replicate_4.2.2_fl_jobs.txt` which contains the bash commands we ran when reporting the results in our paper. We recommend running each of these commands as separate, independent jobs on a cluster space with a large amount of compute space. [This document](https://github.com/mHealth-Research-Group/paaws-benchmarking/blob/main/replicate_our_results/replicate_our_results.md) contains more information on replicating our results.
+We've included `/replicate_our_results/replicate_4.2.1_simfl_jobs.txt` and `/replicate_our_results/replicate_4.2.2_fl_jobs.txt` which contains the bash commands we ran when reporting the results in our paper. We recommend running each of these commands as separate, independent jobs on a cluster space with a large amount of compute space. <a href="https://github.com/mHealth-Research-Group/paaws-benchmarking/blob/main/replicate_our_results/replicate_our_results.md" target="_blank"> This document</a> contains more information on replicating our results.
 
 ## Data Availability and Documentation
 All data used in this repository is <a href="https://hdl.handle.net/2047/D20806901" target="_blank"> available for download</a>.
 
 Additional dataset documentation can be found in the accompanying codebooks for
-<a href="https://docs.google.com/document/d/1NBHiTc89rqZIpqk-gRAcRLGijC48WoBa/edit?usp=sharing&ouid=108613616105994133659&rtpof=true&sd=true" target="_blank">data users </a> and about our <a href="https://docs.google.com/document/d/1kgi7MNqh516IOvbND5aj7rMhJ-_FHNIzrDQDF_l2Spc/edit?usp=sharing" target="_blank"> data collection protocols </a>.
+<a href="https://docs.google.com/document/d/1NBHiTc89rqZIpqk-gRAcRLGijC48WoBa/edit?usp=sharing&ouid=108613616105994133659&rtpof=true&sd=true" target="_blank">data users </a> and about our <a href="https://docs.google.com/document/d/1kgi7MNqh516IOvbND5aj7rMhJ-_FHNIzrDQDF_l2Spc/edit?usp=sharing" target="_blank"> data collection protocols</a>.
 
 ## Citation
 If you use our code or dataset please cite:
@@ -82,7 +82,7 @@ Veronika Potter, Hoan Tran, Daniel Mobley, Suzanne M. Bertisch, Dinesh John, and
 Assessment Using Wearable Sensors (PAAWS) Dataset: Labeled Laboratory and Free-Living Accelerometer Data. *Proc. ACM
 Interact. Mob. Wearable Ubiquitous Technol.* 9, 4, Article 204 (December 2025), 32 pages.
 
-<a href="https://doi.org/10.1145/3770639" target="_blank">https://doi.org/10.1145/3770639 </a>.
+<a href="https://doi.org/10.1145/3770639" target="_blank">https://doi.org/10.1145/3770639</a>.
 
 We also provide our citation as a bibtex:
 ```bibtex
@@ -98,7 +98,7 @@ We also provide our citation as a bibtex:
 }
 ```
 
-Our paper is available as a [pdf](https://github.com/mHealth-Research-Group/paaws-benchmarking/blob/main/results/paper.pdf) or from the <a href="https://doi.org/10.1145/3770639" target="_blank">ACM Digital library </a>.
+Our paper is available as a <a href="https://github.com/mHealth-Research-Group/paaws-benchmarking/blob/main/results/paper.pdf" target="_blank">PDF</a> or from the <a href="https://doi.org/10.1145/3770639" target="_blank">ACM Digital library</a>.
 
 ## More Info on PAAWS
 
@@ -106,8 +106,8 @@ For more information on the PAAWS dataset and resources associated with the data
 
 ## Questions, Comments, Issues
 
-Please use the [issue tracker](https://github.com/mHealth-Research-Group/paaws-study/issuess) for any questions, comments, or issues when using the data.
-If we have not responded to your issue within a week, please [email us](https://www.paawsstudy.org/contact-us.html).
+Please use the <a href="https://github.com/mHealth-Research-Group/paaws-study/issuess" target="_blank">issue tracker</a> for any questions, comments, or issues when using the data.
+If we have not responded to your issue within a week, please <a href="https://www.paawsstudy.org/contact-us.html" target="_blank">email us</a>.
 
 ## Acknowledgements
 
