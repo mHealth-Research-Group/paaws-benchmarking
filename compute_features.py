@@ -1,7 +1,7 @@
 """
 =========================================
-Helper script with methods to compute indidivual features and the final feature
-set used in our experiements.
+Helper script with methods to compute individual features and the final feature
+set used in our experiments.
 =========================================
 Author: Veronika K. Potter
 Email: potter[dot]v[at]northeastern[dot]edu (potter.v@northeastern.edu)
@@ -17,7 +17,7 @@ from scipy.signal import butter, sosfiltfilt
 
 def compute_min(curr_features, no_noise_acc, axes_map={"x": 0, "y": 1, "z": 2}):
     """
-    From the given windowed single-axis, accelerometer data, wihout DC
+    From the given windowed single-axis, accelerometer data, without DC
     component or high frequency noise, compute the min value across the
     specified axes.
 
@@ -497,7 +497,7 @@ def compute_zero_crossings(
 ):
     """
     From the given windowed accelerometer data, without DC
-    component or high frequency noise, compute the numer of zero-crossings by
+    component or high frequency noise, compute the number of zero-crossings by
     axis.
 
     Parameters
@@ -581,7 +581,7 @@ def compute_frequency_features(curr_features, no_noise_acc, vm=False):
     """
     From the given windowed, accelerometer data, without DC
     component or high frequency noise, compute the dominant frequency,
-    dominant maginitude, and entropy from the FFT.
+    dominant magnitude, and entropy from the FFT.
 
     Parameters
     ----------

@@ -2,11 +2,13 @@
 
 This is the GitHub repository of The Physical Activity Assessment Using Wearable Sensors Dataset: Labeled Free-Living Accelerometer Data (IMWUT '25). If you use this data, please [cite our paper](#citation) and <a href="https://www.paawsstudy.org/contact-us.html" target="_blank">email us</a>. All the [data used in these experiments is available](#data-availability).
 
+If you're looking for information on the PAAWS Dataset in general, please see our <a href="https://www.paawsstudy.org/" target="_blank">website</a> or <a href="https://github.com/mHealth-Research-Group/paaws-study" target="_blank">Git repository</a>.
+
 ## Repository Structure
 
 `/data`: folder with two participants' data (raw and as computed features) to use when training or running trained models without downloading the entire dataset. Our code is set up to use paths directing to this folder, if you <a href="https://hdl.handle.net/2047/D20806901" target="_blank">download the PAAWS R1 dataset</a> and want to use our code, place the full dataset in this directory.
 
-`/models`: folder containing a single random forest model trained on the PAAWS SimFL+Lab data to recognize five activities using the data from 20 participants. To run more of our models, 
+`/models`: folder containing a single random forest model trained on the PAAWS SimFL+Lab data to recognize five activities using the data from 20 participants. To run more of our models,
 <a href="https://drive.google.com/drive/folders/12Xr5isM4o_63GQXUstmpLAYKuu1uvIc9?usp=sharing" target="_blank">please download them</a> and unzip them individually in this folder.
 
 `/results`: folder containing (1) the predictions from all the experiments in our paper, (2) all the aggregate confusion matrices from each experiment, (3) larger copies of the paper figures, and (4) a preprint of our paper.
@@ -49,7 +51,7 @@ python run_experiment.py --ds_lo=10 --sensor="LeftWristTop" --dataset="2" --lab 
 
 **NOTE**: We use command line arguments to toggle settings in each experiment. For more information on what each command line argument means and how to configure your arguments, run the following line:
 ```
-python run_experiment.py --h
+python run_experiment.py -h
 ```
 
 ### Using our Models for Inference
@@ -61,18 +63,16 @@ python make_predictions.py --ds_lo=10 --sensor="LeftWrist" --n="20" --mapping="l
 
 **NOTE**: For making inferences, we also use command line arguments to toggle settings in each experiment. For more information on what each command line argument means and how to configure your arguments, run the following line:
 ```
-python make_predictions.py --h
+python make_predictions.py -h
 ```
 
 ### Replicating Our Results
 We've included `/replicate_our_results/replicate_4.2.1_simfl_jobs.txt` and `/replicate_our_results/replicate_4.2.2_fl_jobs.txt` which contains the bash commands we ran when reporting the results in our paper. We recommend running each of these commands as separate, independent jobs on a cluster space with a large amount of compute space. [This document](https://github.com/mHealth-Research-Group/paaws-benchmarking/blob/main/replicate_our_results/replicate_our_results.md) contains more information on replicating our results.
 
-## Data Availability
-Our data is available for download 
+## Data Availability and Documentation
+All data used in this repository is <a href="https://hdl.handle.net/2047/D20806901" target="_blank"> available for download</a>.
 
-<a href="https://drive.google.com/drive/folders/12Xr5isM4o_63GQXUstmpLAYKuu1uvIc9?usp=sharing" target="_blank">
-
-([download the PAAWS R1 dataset](https://hdl.handle.net/2047/D20806901)). We have written accompanying codebooks for 
+Additional dataset documentation can be found in the accompanying codebooks for
 <a href="https://docs.google.com/document/d/1NBHiTc89rqZIpqk-gRAcRLGijC48WoBa/edit?usp=sharing&ouid=108613616105994133659&rtpof=true&sd=true" target="_blank">data users </a> and about our <a href="https://docs.google.com/document/d/1kgi7MNqh516IOvbND5aj7rMhJ-_FHNIzrDQDF_l2Spc/edit?usp=sharing" target="_blank"> data collection protocols </a>.
 
 ## Citation
@@ -80,7 +80,7 @@ If you use our code or dataset please cite:
 
 Veronika Potter, Hoan Tran, Daniel Mobley, Suzanne M. Bertisch, Dinesh John, and Stephen Intille. 2025. The Physical Activity
 Assessment Using Wearable Sensors (PAAWS) Dataset: Labeled Laboratory and Free-Living Accelerometer Data. *Proc. ACM
-Interact. Mob. Wearable Ubiquitous Technol.* 9, 4, Article 204 (December 2025), 32 pages. 
+Interact. Mob. Wearable Ubiquitous Technol.* 9, 4, Article 204 (December 2025), 32 pages.
 
 <a href="https://doi.org/10.1145/3770639" target="_blank">https://doi.org/10.1145/3770639 </a>.
 

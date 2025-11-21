@@ -24,14 +24,14 @@ def make_training_sets_from_np(acc_features_dict, windowed_labels):
     ----------
     acc_features_dict : dict of np.array or pd.DataFrame
         The features computed from the windowed accelerometer data by
-        particpant.
+        participant.
 
         * Keys : int
             Participant IDs.
         * Values : np.array or pd.DataFrame
             The participant's windowed accelerometer data computed into
             features for the specified protocol that consists of only
-            acitivties we care about.
+            activities we care about.
 
 
     windowed_labels : dict of np.array or pd.DataFrame
@@ -118,11 +118,11 @@ def train_eval_RF(training_accel, training_labels, eval_accel, eval_labels):
 
     eval_accel : np.array
         The accelerometer data to be used for evaluating the RF. In our
-        exeperiments, this is the DS_LO's accelerometer data.
+        experiments, this is the DS_LO's accelerometer data.
 
     eval_labels : np.array
         The labels to be used for evaluating the RF. In our
-        exeperiments, this is the DS_LO's labels.
+        experiments, this is the DS_LO's labels.
 
     Returns
     -------

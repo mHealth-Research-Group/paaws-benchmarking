@@ -10,13 +10,11 @@ import argparse
 import os
 import sys
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.preprocessing import StandardScaler
 import joblib
 from utils import MAPPING_SCHEMES
 
 
-def parse_arguements():
+def parse_arguments():
     """
     Parses all the arguments from the command line. Specifies help for each
     flag.
@@ -85,7 +83,8 @@ def parse_arguements():
         default=False,
         help=(
             "If the data to be used is from the SimFL+Lab data or not. "
-            "If flagged use lab data. The data used defaults to the FL data."
+            "If flagged use SimFL+Lab data. The data used defaults to the FL "
+            "data."
         ),
     )
     parser.add_argument(
@@ -170,6 +169,8 @@ def make_predictions():
     """
 
     # Import inside function to use config as a global variable.
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.preprocessing import StandardScaler
     from get_and_clean_data import get_and_clean_accel_and_labels
     from compute_features import make_features
 
@@ -223,7 +224,7 @@ def make_predictions():
 
 
 if __name__ == "__main__":
-    command_args = parse_arguements()
+    command_args = parse_arguments()
 
     # Set up output pathing.
     # TODO: For your specific environment, you may want to change this.

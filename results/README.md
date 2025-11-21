@@ -27,7 +27,7 @@ Most of the path variables in this folder follow the same values as in the [`/mo
 
 #### [sec_num_title] and [sec_num]
 
-Defines the sections of the paper the results of this experiment is reported in. Possible values: `4.2.1-Benchmark_SimFL_Lab`, `4.2.2-Bechmark_FL`, and `4.2.3-Benchmark_PSG_Labels`. The variable `[sec_num]` refers to just the section number. Possible values: `4.2.1`, `4.2.2`, and `4.2.3`.
+Defines the sections of the paper the results of this experiment is reported in. Possible values: `4.2.1-Benchmark_SimFL_Lab`, `4.2.2-Benchmark_FL`, and `4.2.3-Benchmark_PSG_Labels`. The variable `[sec_num]` refers to just the section number. Possible values: `4.2.1`, `4.2.2`, and `4.2.3`.
 
 #### [data_used_in_validation]
 

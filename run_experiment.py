@@ -14,7 +14,7 @@ from tqdm import tqdm
 from utils import MAPPING_SCHEMES, DATASET_LISTS
 
 
-def parse_arguements():
+def parse_arguments():
     """
     Parses all the arguments for the command line. Specifies help for each
     flag.
@@ -37,8 +37,8 @@ def parse_arguements():
         type=int,
         default=10,
         help=(
-            "The dataset (e.g., the int for DS_[ID]) to be left-out in"
-            "leave-one-participant-out cross validation. Defaults to 10 for"
+            "The dataset (e.g., the int for DS_[ID]) to be left-out in "
+            "leave-one-participant-out cross validation. Defaults to 10 for "
             "DS_10."
         ),
     )
@@ -56,8 +56,8 @@ def parse_arguements():
         type=str,
         default="LeftWrist",
         help=(
-            "The sensor to use (e.g., LeftWrist, RightThigh). Defaults to"
-            " LeftWrist."
+            "The sensor to use (e.g., LeftWrist, RightThigh, or any other "
+            "sensor in the PAAWS dataset). Defaults to LeftWrist."
         ),
     )
     parser.add_argument(
@@ -66,7 +66,7 @@ def parse_arguements():
         default="lab_fl_5",
         help=(
             "The activity mapping scheme to use (e.g., keys of "
-            "utils.MAPPING_SCHEMES). Defaults to"
+            "utils.MAPPING_SCHEMES). Defaults to "
             "utils.MAPPING_SCHEMES['lab_fl_5']."
         ),
     )
@@ -97,7 +97,8 @@ def parse_arguements():
         default=False,
         help=(
             "If the data to be used is from the SimFL+Lab data or not. "
-            "If flagged use lab data. The data used defaults to the FL data."
+            "If flagged use SimFL+Lab data. The data used defaults to the FL "
+            "data."
         ),
     )
     parser.add_argument(
@@ -107,8 +108,8 @@ def parse_arguements():
         help=(
             "If the data to be used in training should *not* leave a "
             "participant out. If flagged *do not* leave out [ds_lo]'s data "
-            "from the training set. Defaults to False (i.e., leaving [ds_lo]'s"
-            " data out of the training set)."
+            "from the training set. Defaults to False (i.e., leaving [ds_lo]'s "
+            "data out of the training set)."
         ),
     )
     parser.add_argument(
@@ -204,7 +205,7 @@ def run_experiment():
     windowed_labels = {}
 
     print(("\n***** Step 1 of 3: "
-           "Getting neccesary data from database and computing features. *****"))
+           "Getting necessary data from database and computing features. *****"))
 
     for ds in tqdm(config["DATASETS"], unit="participant"):
         accel, accel_start = get_dataset_accel(ds)
@@ -240,8 +241,7 @@ def run_experiment():
 
 
 if __name__ == "__main__":
-    print("***** Job started! *****")
-    command_args = parse_arguements()
+    command_args = parse_arguments()
 
     # Set up output pathing.
     # TODO: For your specific environment, you may want to change this.
@@ -253,6 +253,8 @@ if __name__ == "__main__":
 
     config = set_up_config(command_args, OUT_FILE)
     sys.modules["config"] = config
+
+    print("***** Job started! *****")
 
     run_experiment()
 

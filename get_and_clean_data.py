@@ -1,7 +1,7 @@
 """
 =========================================
 Helper script with methods to retrieve the PAAWS accelerometer data from its
-location and "clean" the data to only include the specified actitivites
+location and "clean" the data to only include the specified activities
 used throughout our experiments.
 =========================================
 Author: Veronika K. Potter
@@ -39,7 +39,7 @@ def get_accel_start_time(file):
 
 def get_dataset_accel(ds):
     """
-    Gets and returns the acclerometer data and data collection start time
+    Gets and returns the accelerometer data and data collection start time
     for a specified participant (e.g., DS_[ID]) and data collection protocol.
 
     Parameters
@@ -84,7 +84,7 @@ def get_dataset_accel(ds):
 
 def get_accel():
     """
-    Gets and returns the acclerometer data and data collection start time
+    Gets and returns the accelerometer data and data collection start time
     for all participants in DATASETS for a specified data collection protocol
     (LAB or FL).
 
@@ -95,13 +95,13 @@ def get_accel():
     Returns
     -------
     accel : dict of pd.DataFrame
-        Dictionary containing all participants acceleromter datas for the
+        Dictionary containing all participants accelerometer data for the
         specified protocol.
 
         * Keys : int
             Participant IDs.
         * Values : pd.DataFrame
-            Dataframes containng the accelerometer data from the specified
+            Dataframes containing the accelerometer data from the specified
             participant and collection protocol.
 
     accel_starts : dict of datetime
@@ -136,7 +136,7 @@ def map_labels(raw_labels):
     -------
     pd.DataFrame
         A set of labels that is mapped to match and contain only the desired
-        actitvities in the activity grouping scheme (utils.MAPPING_SCHEMES).
+        activities in the activity grouping scheme (utils.MAPPING_SCHEMES).
     """
 
     # For each "raw" label, map if it is in the mapping scheme.
@@ -172,7 +172,7 @@ def map_labels(raw_labels):
 def get_dataset_labels(ds):
     """
     Gets and returns the labels from a data collection protocol (LAB or FL) for
-    a specified participoant (ds).
+    a specified participant (ds).
 
     Parameters
     ----------
@@ -356,7 +356,7 @@ def window_dataset_accel(accel, accel_start, window_labs):
     -------
     np.array
         The participant's windowed accelerometer data for the specified protocol
-        that consists of only acitivties we care about.
+        that consists of only activities we care about.
     """
 
     # Remove pre-data collection so accel matches label length.
@@ -369,7 +369,7 @@ def window_dataset_accel(accel, accel_start, window_labs):
     ]
     accel = accel.head(num_rows_to_keep)
 
-    # Shape accel into WINDOW_SIZE incrememnts.
+    # Shape accel into WINDOW_SIZE increments.
     accel_array = accel.to_numpy()
     accel_array = np.reshape(
         accel_array, (-1, config["WINDOW_SIZE"], 3)
@@ -399,13 +399,13 @@ def window_accel(accel_dict, start_times_dict, windowed_labels_dict):
     Parameters
     ----------
     accel_dict : dict of pd.DataFrame
-        Dictionary containing all participants acceleromter datas for the
+        Dictionary containing all participants accelerometer data for the
         specified protocol.
 
         * Keys : int
             Participant IDs.
         * Values : pd.DataFrame
-            Dataframes containng the accelerometer data from the specified
+            Dataframes containing the accelerometer data from the specified
             participant and collection protocol.
 
     start_times_dict : dict of datetime
@@ -438,7 +438,7 @@ def window_accel(accel_dict, start_times_dict, windowed_labels_dict):
             Participant IDs.
         * Values : np.array
             The participant's windowed accelerometer data for the specified
-            protocol that consists of only acitivties we care about.
+            protocol that consists of only activities we care about.
     """
 
     windowed_accel = {}
@@ -486,7 +486,7 @@ def get_and_clean_accel_and_labels():
             Participant IDs.
         * Values : np.array
             The participant's windowed accelerometer data for the specified
-            protocol that consists of only acitivties we care about.
+            protocol that consists of only activities we care about.
 
     windowed_labels : dict of pd.DataFrame
         Dictionary containing all participants labels mapped into the desired

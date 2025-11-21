@@ -1,12 +1,12 @@
 # Pretrained Models from the PAAWS IMWUT `25 Paper Experiments
 
-This folder contains the zipped weights of a random forest model (RF) that was trained to classify five activites (*Sitting*, *Standing*, *Walking*, *Biking*, *Lying_Down*) from left wrist (LeftWristTop) accelerometer data from 20 participants in the SimFL+Lab protocol. For more information on this model see [using the example model](#using-the-example-model).
+This folder contains the zipped weights of a random forest model (RF) that was trained to classify five activities (*Sitting*, *Standing*, *Walking*, *Biking*, *Lying_Down*) from left wrist (LeftWristTop) accelerometer data from 20 participants in the SimFL+Lab protocol. For more information on this model see [using the example model](#using-the-example-model).
 
 The folder containing all the weights for the trained random forest models (RF) discussed in the benchmarking section of our paper (Sec. 4.2) can be downloaded from a <a href="https://drive.google.com/drive/folders/12Xr5isM4o_63GQXUstmpLAYKuu1uvIc9?usp=sharing" target="_blank">Google Drive folder</a> (~ 22 GB to download all zipped model weights, unzipped they are over 100 GB.) The rest of this README describes the folder structure of the models available for download on Google drive.
 
 ## Folder Structure
 
-The weights for each model and their corresponding scaler (to be used on the pre-processed data prior to prediction) are in an idividual folder with the path name `/models/[training_data]/[num_activities]_Acts/[sensor]_[n]_participants/`. Possible values for each of these variables are defined below.
+The weights for each model and their corresponding scaler (to be used on the pre-processed data prior to prediction) are in an individual folder with the path name `/models/[training_data]/[num_activities]_Acts/[sensor]_[n]_participants/`. Possible values for each of these variables are defined below.
 
 ### [training_data]
 `SimFL_Lab/`: folder containing models trained using accelerometer data from the SimFL+Lab protocol.
