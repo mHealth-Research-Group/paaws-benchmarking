@@ -72,8 +72,7 @@ We've included `/replicate_our_results/replicate_4.2.1_simfl_jobs.txt` and `/rep
 ## Data Availability and Documentation
 All data used in this repository is <a href="https://hdl.handle.net/2047/D20806901" target="_blank"> available for download</a>.
 
-Additional dataset documentation can be found in the accompanying codebooks for
-<a href="https://docs.google.com/document/d/1NBHiTc89rqZIpqk-gRAcRLGijC48WoBa/edit?usp=sharing&ouid=108613616105994133659&rtpof=true&sd=true" target="_blank">data users </a> and about our <a href="https://docs.google.com/document/d/1kgi7MNqh516IOvbND5aj7rMhJ-_FHNIzrDQDF_l2Spc/edit?usp=sharing" target="_blank"> data collection protocols</a>.
+Additional dataset documentation can be found in the <a href="https://drive.google.com/drive/folders/1YudTtkAxFVQ0nSjxn0pGQ9NOcY5eVsM3?usp=sharing" target="_blank">accompanying PAAWS codebooks</a>..
 
 ## Citation
 If you use our code or dataset please cite:
