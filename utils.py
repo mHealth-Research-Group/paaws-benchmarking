@@ -48,7 +48,7 @@ MAPPING_SCHEMES = {
 
         'Stationary_Biking_300_Lab': 'Biking',
         'Exercising_Gym_Stationary_Bicycle': 'Biking',
-        'Cycling_Active_Pedaling_Stationary_Bicycle': 'Biking',
+        'Cycling_Active_Pedaling_Stationary_Bike': 'Biking',
         'Cycling_Active_Pedaling_Regular_Bicycle': 'Biking',
     },
 
