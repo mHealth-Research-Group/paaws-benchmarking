@@ -5,6 +5,8 @@ the random forest (RF) algorithm we use in our experiments.
 =========================================
 Author: Veronika K. Potter
 Email: potter[dot]v[at]northeastern[dot]edu (potter.v@northeastern.edu)
+Edited by: Hoan Tran
+Email: tran[dot]hoan1[at]northeastern[dot]edu (tran.hoan1@northeastern.edu)
 """
 
 import config
@@ -140,7 +142,7 @@ def train_eval_RF(training_accel, training_labels, eval_accel, eval_labels):
     eval_accel_norm = scaler.transform(eval_accel.to_numpy())
 
     # Train the RF and predict the evaluation data.
-    rf = RandomForestClassifier(n_estimators=1000, verbose=1)
+    rf = RandomForestClassifier(n_estimators=200, verbose=1)
     rf = rf.fit(train_accel_norm, training_labels)
     rf_preds = rf.predict(eval_accel_norm)
 

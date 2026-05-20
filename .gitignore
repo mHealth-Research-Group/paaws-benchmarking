@@ -225,5 +225,6 @@ all_create_jobs.py
 # Test result folder
 test/
 temp_results/
+logs/
 
 .DS_Store

@@ -38,9 +38,9 @@ Run all the commands to replicate the results in Sec 4.2.2 by altering the follo
 ```python
 from utils import DATASET_LISTS
 
-sensors = ["LeftWrist", "RightThigh"]
+sensors = ["LeftWrist", "RightThigh", "RightAnkle", "RightWaist", "RightWrist"]
 mapping_lists = ["lab_fl_5", "fl_11", ]
-dataset_lists = ["FL_20"]
+dataset_lists = ["FL_20_R1"]
 
 st_to_write = "***** Replicate Sec 4.2.2 Benchmarking the PAAWS R1 FL Dataset *****\n\n"
 

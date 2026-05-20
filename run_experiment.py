@@ -196,7 +196,8 @@ def run_experiment():
         get_dataset_accel,
         get_dataset_labels,
         window_dataset_accel,
-        window_dataset_labels
+        window_dataset_labels,
+        clip_labels_to_accel
     )
     from compute_features import make_features
     from train_eval_model import train_eval_RF, make_training_sets_from_np
@@ -211,7 +212,14 @@ def run_experiment():
         accel, accel_start = get_dataset_accel(ds)
         labels = get_dataset_labels(ds)
 
+        if accel is None or labels is None:
+            continue
+        
+        labels = clip_labels_to_accel(labels, accel, accel_start, ds=ds)
         windowed_label = window_dataset_labels(labels)
+        if windowed_label.empty:
+            print(f"WARNING: DS_{ds} has no usable label windows, skipping")
+            continue
         windowed_accel = window_dataset_accel(
             accel,
             accel_start,

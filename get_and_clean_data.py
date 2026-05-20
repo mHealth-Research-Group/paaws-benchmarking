@@ -9,7 +9,8 @@ Email: potter[dot]v[at]northeastern[dot]edu (potter.v@northeastern.edu)
 """
 
 import config
-from datetime import datetime
+from datetime import datetime, timedelta
+import os
 import numpy as np
 import pandas as pd
 
@@ -76,6 +77,13 @@ def get_dataset_accel(ds):
             f"DS_{ds}-Free-{config['SENSOR']}.csv"
         )
 
+    if not os.path.exists(acc_path):
+        print(
+            f"WARNING: accel file not found for DS_{ds}, "
+            f"skipping participant: {acc_path}"
+        )
+        return None, None
+
     accel = pd.read_csv(acc_path, skiprows=10)
     start_time = get_accel_start_time(acc_path)
 
@@ -117,7 +125,11 @@ def get_accel():
     accel_starts = {}
 
     for ds in config["DATASETS"]:
-        accel[ds], accel_starts[ds] = get_dataset_accel(ds)
+        ds_accel, ds_start = get_dataset_accel(ds)
+        if ds_accel is None:
+            continue
+        accel[ds] = ds_accel
+        accel_starts[ds] = ds_start
 
     return accel, accel_starts
 
@@ -198,11 +210,65 @@ def get_dataset_labels(ds):
             f"{base_path}/PAAWS_FreeLiving/DS_{ds}/label/DS_{ds}-Free-label.csv"
         )
 
+    if not os.path.exists(label_path):
+        print(
+            f"WARNING: label file not found for DS_{ds}, "
+            f"skipping participant: {label_path}"
+        )
+        return None
+
     labels = pd.read_csv(label_path, parse_dates=["START_TIME", "STOP_TIME"])
     mapped_labels = map_labels(labels)
 
     return mapped_labels
 
+def clip_labels_to_accel(labels, accel, accel_start, ds=None):
+    """
+    Restrict a label DataFrame to the time range covered by the accelerometer
+    recording. Rows entirely outside [accel_start, accel_end) are dropped;
+    rows that straddle a boundary have their START_TIME / STOP_TIME clamped.
+
+    Parameters
+    ----------
+    labels : pd.DataFrame
+        Mapped labels with columns START_TIME, STOP_TIME, MAPPED_LABEL.
+    accel : pd.DataFrame
+        Raw accelerometer rows for this participant.
+    accel_start : datetime
+        Wall-clock time of accel[0].
+    ds : int, optional
+        Participant ID, used only for logging.
+
+    Returns
+    -------
+    pd.DataFrame
+        Labels clipped to the accel time range. May be empty if no overlap.
+    """
+    accel_end = accel_start + timedelta(seconds=len(accel) / config["FREQ"])
+
+    in_range = (
+        (labels["STOP_TIME"] > accel_start)
+        & (labels["START_TIME"] < accel_end)
+    )
+    n_outside = (~in_range).sum()
+    labels = labels[in_range].copy()
+
+    if labels.empty:
+        if ds is not None:
+            print(f"WARNING: DS_{ds} has no labels overlapping accel "
+                f"[{accel_start} .. {accel_end}]")
+        return labels
+
+    n_clipped_start = (labels["START_TIME"] < accel_start).sum()
+    n_clipped_stop = (labels["STOP_TIME"] > accel_end).sum()
+    labels["START_TIME"] = labels["START_TIME"].clip(lower=accel_start)
+    labels["STOP_TIME"] = labels["STOP_TIME"].clip(upper=accel_end)
+
+    if ds is not None and (n_outside or n_clipped_start or n_clipped_stop):
+        print(f"  DS_{ds}: dropped {n_outside} out-of-range label row(s), "
+            f"clipped {n_clipped_start} at start, {n_clipped_stop} at end")
+
+    return labels
 
 def resample_labels(og_labels_df, sec_len=1):
     """
@@ -227,7 +293,7 @@ def resample_labels(og_labels_df, sec_len=1):
     og_labels_df["START_TIME"] = og_labels_df["START_TIME"].dt.round("1s")
 
     temp_times = [
-        (pd.date_range(e.START_TIME, e.STOP_TIME, freq="1s"), e.MAPPED_LABEL)
+        (pd.date_range(e.START_TIME, e.STOP_TIME, freq="1s", inclusive = 'left'), e.MAPPED_LABEL)
         for e in og_labels_df.itertuples()
     ]
     res = [
@@ -321,7 +387,10 @@ def get_labels():
 
     # Get and map labels.
     for ds in config["DATASETS"]:
-        labels[ds] = get_dataset_labels(ds)
+        ds_labels = get_dataset_labels(ds)
+        if ds_labels is None:
+            continue
+        labels[ds] = ds_labels
 
     # Window the labels.
     windowed_labels = {}
@@ -443,7 +512,8 @@ def window_accel(accel_dict, start_times_dict, windowed_labels_dict):
 
     windowed_accel = {}
 
-    for key in accel_dict:
+    shared_keys = accel_dict.keys() & windowed_labels_dict.keys()
+    for key in shared_keys:
         windowed_accel[key] = window_dataset_accel(
             accel_dict[key], start_times_dict[key], windowed_labels_dict[key]
         )
