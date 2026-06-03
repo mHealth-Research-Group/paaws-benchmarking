@@ -6,7 +6,7 @@ If you're looking for information on the PAAWS Dataset in general, please see ou
 
 ## Repository Structure
 
-`/data`: folder with two participants' data (raw and as computed features) to use when training or running trained models without downloading the entire dataset. Our code is set up to use paths directing to this folder, if you <a href="https://hdl.handle.net/2047/D20806901" target="_blank">download the PAAWS R1 dataset</a> and want to use our code, place the full dataset in this directory.
+`/data`: folder with two participants' data (raw and as computed features) to use when training or running trained models without downloading the entire dataset. Our code is set up to use paths directing to this folder. You will need to download the PAAWS dataset and place the full dataset in this directory. You may download the dataset at [this link](https://repository.library.northeastern.edu/collections/neu:cn69m462g)
 
 `/models`: folder containing a single random forest model trained on the PAAWS SimFL+Lab data to recognize five activities using the data from 20 participants. To run more of our models,
 <a href="https://drive.google.com/drive/folders/12Xr5isM4o_63GQXUstmpLAYKuu1uvIc9?usp=sharing" target="_blank">please download them</a> and unzip them individually in this folder.
