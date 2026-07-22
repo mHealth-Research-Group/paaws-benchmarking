@@ -8,6 +8,8 @@ If you're looking for information on the PAAWS Dataset in general, please see ou
 
 `/data`: folder with two participants' data (raw and as computed features) to use when training or running trained models without downloading the entire dataset. Our code is set up to use paths directing to this folder, if you <a href="https://hdl.handle.net/2047/D20806901" target="_blank">download the PAAWS R1 dataset</a> and want to use our code, place the full dataset in this directory.
 
+`/corrections`: folder with code, data, and information on the [correction made to Table 4 in our IMWUT paper](#corrections). (**NOTE**: Added July 2026.)
+
 `/models`: folder containing a single random forest model trained on the PAAWS SimFL+Lab data to recognize five activities using the data from 20 participants. To run more of our models,
 <a href="https://drive.google.com/drive/folders/12Xr5isM4o_63GQXUstmpLAYKuu1uvIc9?usp=sharing" target="_blank">please download them</a> and unzip them individually in this folder.
 
@@ -98,6 +100,10 @@ We also provide our citation as a bibtex:
 ```
 
 Our paper is available as a <a href="https://github.com/mHealth-Research-Group/paaws-benchmarking/blob/main/results/paper.pdf" target="_blank">PDF</a> or from the <a href="https://doi.org/10.1145/3770639" target="_blank">ACM Digital library</a>.
+
+## Corrections
+
+**July 2026**: We issued a correction to Table 4. Originally, we used Excel to compute the total duration of activities in the dataset (shown in Table 4), however, we found an error in some of the formulas that resulted in a participant's data being excluded and thus reported less data than is present in the R1 dataset. To accompany this correction, we have added the raw data files and computations (both incorrect and correct versions) to this repository.
 
 ## More Info on PAAWS
 
